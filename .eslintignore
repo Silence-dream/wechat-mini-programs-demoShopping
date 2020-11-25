@@ -2,5 +2,5 @@
 *.wxml
 *.wxss
 *.json
-*.js
+# *.js
 miniprogram/pages/logs

@@ -13,6 +13,6 @@ module.exports = {
   },
   rules: {
     // semi: [2, "always"], //强制语句结束有分号
-    "prettier/prettier": "error",
+    "prettier/prettier": ["error", { parser: "flow" }],
   },
 };
