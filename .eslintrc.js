@@ -12,7 +12,6 @@ module.exports = {
     sourceType: "module",
   },
   rules: {
-    // semi: [2, "always"], //强制语句结束有分号
-    "prettier/prettier": ["error", { parser: "flow" }],
+    "prettier/prettier": ["error"],
   },
 };
