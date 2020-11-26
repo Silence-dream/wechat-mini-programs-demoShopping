@@ -20,4 +20,28 @@
     </navigator>
   </view>
   <!-- 导航结束 -->
+  <!-- 楼层开始 -->
+  <view class="index-floor">
+    <view class="flooritem" wx:for="{{floorList}}" wx:for-item="item1" wx:for-index="index1" wx:key="floor_title">
+      <!-- floor标题 -->
+      <view class="floor-title">
+        <image mode="widthFix" src="{{item1.floor_title.image_src}}"></image>
+      </view>
+      <view class="floor-conent">
+        <view class="floor-conent-left">
+          <!-- 左边大图 -->
+          <navigator class="floor-conent" open-type="{{item2.open_type}}" url="{{item2.navigator_url}}" wx:for="{{item1.product_list}}" wx:for-item="item2" wx:for-index="index2" wx:key="{{name}}" wx:if="{{index2===0}}">
+            <image mode="widthFix" src="{{item2.image_src}}"></image>
+          </navigator>
+        </view>
+        <view class="floor-conent-right">
+          <!-- 右边小图 -->
+          <navigator class="floor-conent" open-type="{{item2.open_type}}" url="{{item2.navigator_url}}" wx:for="{{item1.product_list}}" wx:for-item="item2" wx:for-index="index2" wx:key="{{name}}" wx:if="{{index2>0}}">
+            <image mode="scaleToFill" src="{{item2.image_src}}"></image>
+          </navigator>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 楼层结束 -->
 </view>
