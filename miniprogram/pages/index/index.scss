@@ -49,14 +49,14 @@
       display: flex;
       flex: 2;
       flex-wrap: wrap;
-      navigator{
+      navigator {
         flex: 1;
         flex-basis: 50%;
-        height: 49%;
-        &:nth-child(-n+2){
+        height: 50%;
+        &:nth-child(-n + 2) {
           border-bottom: 10rpx solid #ffffff;
         }
-        &:nth-child(-n+4){
+        &:nth-child(-n + 4) {
           border-left: 10rpx solid #ffffff;
         }
       }

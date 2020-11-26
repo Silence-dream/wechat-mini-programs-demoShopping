@@ -1,6 +1,5 @@
 //导入请求方法
 import { request } from "../../request/index.js";
-
 //Page Object
 Page({
   data: {
@@ -13,12 +12,11 @@ Page({
     this.getCatesList();
     this.getFloorList();
   },
-
   // 获取轮播图数据
   getSwiperList(): void {
     request({
       url: "https://api-hmugo-web.itheima.net/api/public/v1/home/swiperdata",
-    }).then((result: any) => {
+    }).then((result: ResponseProps) => {
       this.setData({
         swiperList: result.data.message,
       });
@@ -28,7 +26,8 @@ Page({
   getCatesList(): void {
     request({
       url: "https://api-hmugo-web.itheima.net/api/public/v1/home/catitems",
-    }).then((result: any) => {
+    }).then((result: ResponseProps) => {
+      console.log(result);
       this.setData({
         catesList: result.data.message,
       });
@@ -38,7 +37,7 @@ Page({
   getFloorList(): void {
     request({
       url: "https://api-hmugo-web.itheima.net/api/public/v1/home/floordata",
-    }).then((result: any) => {
+    }).then((result: ResponseProps) => {
       console.log(result);
       this.setData({
         floorList: result.data.message,
@@ -46,3 +45,11 @@ Page({
     });
   },
 });
+
+/* 返回值类型约束 */
+interface ResponseProps {
+  data: {
+    message: never[];
+    meta: never[];
+  };
+}
