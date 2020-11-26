@@ -1,3 +1,7 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "SearchInput":"../../components/searchInput/searchInput"
+  },
+  "navigationBarTitleText": "黑马商城",
+  "navigationBarTextStyle": "white"
 }

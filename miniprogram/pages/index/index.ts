@@ -1,5 +1,7 @@
 //导入请求方法
 import { request } from "../../request/index.js";
+// 导入约束
+import { ResponseProps } from "../../store/store";
 //Page Object
 Page({
   data: {
@@ -27,7 +29,6 @@ Page({
     request({
       url: "https://api-hmugo-web.itheima.net/api/public/v1/home/catitems",
     }).then((result: ResponseProps) => {
-      console.log(result);
       this.setData({
         catesList: result.data.message,
       });
@@ -38,18 +39,9 @@ Page({
     request({
       url: "https://api-hmugo-web.itheima.net/api/public/v1/home/floordata",
     }).then((result: ResponseProps) => {
-      console.log(result);
       this.setData({
         floorList: result.data.message,
       });
     });
   },
 });
-
-/* 返回值类型约束 */
-interface ResponseProps {
-  data: {
-    message: never[];
-    meta: never[];
-  };
-}
