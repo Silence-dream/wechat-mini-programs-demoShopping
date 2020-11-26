@@ -1,0 +1,16 @@
+@import "../../style/commont";
+.search-input {
+  background-color: var(--themeColor);
+  padding: 5rpx * $base375;
+  height: 45rpx * $base375;
+  navigator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 7.5rpx * $base375;
+    height: 100%;
+    font-size: 16rpx * $base375;
+    color: #666666;
+  }
+}
