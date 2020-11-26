@@ -9,8 +9,19 @@
     width: 750rpx;
     height: 340rpx;
   }
-  
+
   image {
+    width: 100%;
+  }
+}
+
+.index-cate{
+  display: flex;
+  padding: 20rpx;
+  navigator{
+    flex: 1;
+  }
+  image{
     width: 100%;
   }
 }

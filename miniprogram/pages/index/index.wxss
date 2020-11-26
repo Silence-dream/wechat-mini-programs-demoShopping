@@ -11,3 +11,20 @@
 .index-swiper image {
   width: 100%;
 }
+
+.index-cate {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 20rpx;
+}
+
+.index-cate navigator {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.index-cate image {
+  width: 100%;
+}
