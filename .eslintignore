@@ -4,3 +4,4 @@
 *.json
 *.js
 miniprogram/pages/logs
+typings/*
