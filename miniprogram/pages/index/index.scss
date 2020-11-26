@@ -1,0 +1,8 @@
+/* 使用自定义变量 */
+/* view{
+  color: var(--themeColor);
+} */
+@import "../../style/commont";
+view{
+  font-size: 35rpx * $base375;
+}
