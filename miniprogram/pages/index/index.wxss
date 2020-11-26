@@ -1,0 +1,4 @@
+/* 使用自定义变量 */
+/* view{
+  color: var(--themeColor);
+} */

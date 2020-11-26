@@ -13,5 +13,6 @@ module.exports = {
   },
   rules: {
     "prettier/prettier": ["error"],
+    eqeqeq:["error","always"] // 强制使用===等于
   },
 };
