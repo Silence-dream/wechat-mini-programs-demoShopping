@@ -1,66 +1,38 @@
-// pages/goods_list/index.js
+"use strict";
 Page({
-
-    /**
-     * 页面的初始数据
-     */
     data: {
-
+        tabs: [
+            {
+                id: 0,
+                name: "综合",
+                isActive: true,
+            },
+            {
+                id: 1,
+                name: "销量",
+                isActive: false,
+            },
+            {
+                id: 2,
+                name: "价格",
+                isActive: false,
+            },
+        ],
     },
-
-    /**
-     * 生命周期函数--监听页面加载
-     */
     onLoad: function (options) {
-
+        console.log(options);
     },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
-
+    changeCurrent(e) {
+        const { index } = e.detail;
+        console.log(index);
+        const { tabs } = this.data;
+        tabs.forEach((item, i) => {
+            index === i ? (item.isActive = true) : (item.isActive = false);
+        });
+        this.setData({
+            tabs,
+        });
+        console.log("父组件被触发了");
     },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function () {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function () {
-
-    }
-})
+});
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJpbmRleC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQ0EsSUFBSSxDQUFDO0lBSUgsSUFBSSxFQUFFO1FBQ0osSUFBSSxFQUFFO1lBQ0o7Z0JBQ0UsRUFBRSxFQUFFLENBQUM7Z0JBQ0wsSUFBSSxFQUFFLElBQUk7Z0JBQ1YsUUFBUSxFQUFFLElBQUk7YUFDZjtZQUNEO2dCQUNFLEVBQUUsRUFBRSxDQUFDO2dCQUNMLElBQUksRUFBRSxJQUFJO2dCQUNWLFFBQVEsRUFBRSxLQUFLO2FBQ2hCO1lBQ0Q7Z0JBQ0UsRUFBRSxFQUFFLENBQUM7Z0JBQ0wsSUFBSSxFQUFFLElBQUk7Z0JBQ1YsUUFBUSxFQUFFLEtBQUs7YUFDaEI7U0FDRjtLQUNGO0lBS0QsTUFBTSxFQUFFLFVBQVUsT0FBTztRQUN2QixPQUFPLENBQUMsR0FBRyxDQUFDLE9BQU8sQ0FBQyxDQUFDO0lBQ3ZCLENBQUM7SUFDRCxhQUFhLENBQUMsQ0FBTTtRQUNsQixNQUFNLEVBQUUsS0FBSyxFQUFFLEdBQUcsQ0FBQyxDQUFDLE1BQU0sQ0FBQztRQUMzQixPQUFPLENBQUMsR0FBRyxDQUFDLEtBQUssQ0FBQyxDQUFDO1FBQ25CLE1BQU0sRUFBRSxJQUFJLEVBQUUsR0FBRyxJQUFJLENBQUMsSUFBSSxDQUFDO1FBQzNCLElBQUksQ0FBQyxPQUFPLENBQUMsQ0FBQyxJQUFJLEVBQUUsQ0FBQyxFQUFFLEVBQUU7WUFDdkIsS0FBSyxLQUFLLENBQUMsQ0FBQyxDQUFDLENBQUMsQ0FBQyxJQUFJLENBQUMsUUFBUSxHQUFHLElBQUksQ0FBQyxDQUFDLENBQUMsQ0FBQyxDQUFDLElBQUksQ0FBQyxRQUFRLEdBQUcsS0FBSyxDQUFDLENBQUM7UUFDakUsQ0FBQyxDQUFDLENBQUM7UUFDSCxJQUFJLENBQUMsT0FBTyxDQUFDO1lBQ1gsSUFBSTtTQUNMLENBQUMsQ0FBQztRQUNILE9BQU8sQ0FBQyxHQUFHLENBQUMsU0FBUyxDQUFDLENBQUM7SUFDekIsQ0FBQztDQUNGLENBQUMsQ0FBQyIsInNvdXJjZXNDb250ZW50IjpbIi8vIHBhZ2VzL2dvb2RzX2xpc3QvaW5kZXguanNcblBhZ2Uoe1xuICAvKipcbiAgICog6aG16Z2i55qE5Yid5aeL5pWw5o2uXG4gICAqL1xuICBkYXRhOiB7XG4gICAgdGFiczogW1xuICAgICAge1xuICAgICAgICBpZDogMCxcbiAgICAgICAgbmFtZTogXCLnu7zlkIhcIixcbiAgICAgICAgaXNBY3RpdmU6IHRydWUsXG4gICAgICB9LFxuICAgICAge1xuICAgICAgICBpZDogMSxcbiAgICAgICAgbmFtZTogXCLplIDph49cIixcbiAgICAgICAgaXNBY3RpdmU6IGZhbHNlLFxuICAgICAgfSxcbiAgICAgIHtcbiAgICAgICAgaWQ6IDIsXG4gICAgICAgIG5hbWU6IFwi5Lu35qC8XCIsXG4gICAgICAgIGlzQWN0aXZlOiBmYWxzZSxcbiAgICAgIH0sXG4gICAgXSxcbiAgfSxcblxuICAvKipcbiAgICog55Sf5ZG95ZGo5pyf5Ye95pWwLS3nm5HlkKzpobXpnaLliqDovb1cbiAgICovXG4gIG9uTG9hZDogZnVuY3Rpb24gKG9wdGlvbnMpIHtcbiAgICBjb25zb2xlLmxvZyhvcHRpb25zKTtcbiAgfSxcbiAgY2hhbmdlQ3VycmVudChlOiBhbnkpIHtcbiAgICBjb25zdCB7IGluZGV4IH0gPSBlLmRldGFpbDtcbiAgICBjb25zb2xlLmxvZyhpbmRleCk7XG4gICAgY29uc3QgeyB0YWJzIH0gPSB0aGlzLmRhdGE7XG4gICAgdGFicy5mb3JFYWNoKChpdGVtLCBpKSA9PiB7XG4gICAgICBpbmRleCA9PT0gaSA/IChpdGVtLmlzQWN0aXZlID0gdHJ1ZSkgOiAoaXRlbS5pc0FjdGl2ZSA9IGZhbHNlKTtcbiAgICB9KTtcbiAgICB0aGlzLnNldERhdGEoe1xuICAgICAgdGFicyxcbiAgICB9KTtcbiAgICBjb25zb2xlLmxvZyhcIueItue7hOS7tuiiq+inpuWPkeS6hlwiKTtcbiAgfSxcbn0pO1xuIl19

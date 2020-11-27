@@ -1,6 +1,6 @@
 // 引入请求方法
 import { request } from "../../request/index";
-import { ResponseProps, CatesProps } from "../../store/store";
+import { CatesProps } from "../../store/store";
 Page({
   data: {
     // 左侧菜单数据
