@@ -7,7 +7,10 @@ Page({
     leftMenuList: [],
     // 右侧商品数据
     rightConent: [],
+    // 让左侧菜单选中添加样式的索引
     currentIndex: 0,
+    // 右侧菜单滑动距离顶部的距离
+    scrollTop: 0,
   },
   /* 缓存值 商品数据 */
   Cates: [],
@@ -94,6 +97,8 @@ Page({
       rightConent: rightConentD[index],
       // 左侧菜单选中样式切换
       currentIndex: index,
+      // 点击左侧菜单让右边菜单距离顶部的距离为0
+      scrollTop: 0,
     });
     //#endregion
   },
