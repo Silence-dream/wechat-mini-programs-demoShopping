@@ -56,31 +56,53 @@ Page({
     }
   },
   // 获取分页数据
-  getCates() {
-    request({
-      url: "https://api-hmugo-web.itheima.net/api/public/v1/categories",
-    }).then((result: ResponseProps) => {
-      // 保存值到缓存变量里面
-      this.Cates = result.data.message;
-      /* 保存值到本地存储里面 */
-      wx.setStorageSync("cates", {
-        time: Date.now(),
-        data: this.Cates,
-      });
-      const leftMenuList = this.Cates.map((item: CatesProps) => {
-        return item.cat_name;
-      });
-      const rightConent = this.Cates.map((item: CatesProps) => {
-        return item.children;
-      });
-      /* 类型断言 */
-      const leftMenuListD = leftMenuList as never[];
-      const rightConentD = rightConent as never[];
-      // 保存左侧菜单数据和右侧菜单数据
-      this.setData({
-        leftMenuList: leftMenuListD,
-        rightConent: rightConentD[0],
-      });
+  async getCates() {
+    // request({
+    //   url: "/categories",
+    // }).then((result: ResponseProps) => {
+    //   // 保存值到缓存变量里面
+    //   this.Cates = result.data.message;
+    //   /* 保存值到本地存储里面 */
+    //   wx.setStorageSync("cates", {
+    //     time: Date.now(),
+    //     data: this.Cates,
+    //   });
+    //   const leftMenuList = this.Cates.map((item: CatesProps) => {
+    //     return item.cat_name;
+    //   });
+    //   const rightConent = this.Cates.map((item: CatesProps) => {
+    //     return item.children;
+    //   });
+    //   /* 类型断言 */
+    //   const leftMenuListD = leftMenuList as never[];
+    //   const rightConentD = rightConent as never[];
+    //   // 保存左侧菜单数据和右侧菜单数据
+    //   this.setData({
+    //     leftMenuList: leftMenuListD,
+    //     rightConent: rightConentD[0],
+    //   });
+    // });
+    const result: any = await request({ url: "/categories" });
+    // 保存值到缓存变量里面
+    this.Cates = result.data.message;
+    /* 保存值到本地存储里面 */
+    wx.setStorageSync("cates", {
+      time: Date.now(),
+      data: this.Cates,
+    });
+    const leftMenuList = this.Cates.map((item: CatesProps) => {
+      return item.cat_name;
+    });
+    const rightConent = this.Cates.map((item: CatesProps) => {
+      return item.children;
+    });
+    /* 类型断言 */
+    const leftMenuListD = leftMenuList as never[];
+    const rightConentD = rightConent as never[];
+    // 保存左侧菜单数据和右侧菜单数据
+    this.setData({
+      leftMenuList: leftMenuListD,
+      rightConent: rightConentD[0],
     });
   },
   // 点击切换商品分类
