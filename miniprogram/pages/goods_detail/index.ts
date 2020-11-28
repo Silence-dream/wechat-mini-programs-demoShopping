@@ -6,7 +6,10 @@ Page({
   data: {
     goodsObj: {},
   },
-  goodsInfo: [],
+  // 点击放大图片所用的数据
+  PrevewImageArr: [],
+  // 商品的信息
+  goodsInfo: {},
   /**
    * 生命周期函数--监听页面加载
    */
@@ -18,7 +21,9 @@ Page({
   /* 获取商品详情 */
   async getGoodsDetail<T>(goods_id: T) {
     const result = await request({ url: "/goods/detail", data: { goods_id } });
-    this.goodsInfo = result.data.message.pics;
+    this.PrevewImageArr = result.data.message.pics;
+    this.goodsInfo = result.data.message;
+    console.log(result);
     this.setData({
       goodsObj: {
         goods_name: result.data.message.goods_name,
@@ -35,14 +40,39 @@ Page({
     });
   },
   // 点击图片放大
-  handlePrevewImage(e) {
+  handlePrevewImage(e: any) {
     // pics_mid
     console.log(e);
-    const urls = this.goodsInfo.map((item: any) => item.pics_mid);
+    const urls = this.PrevewImageArr.map((item: any) => item.pics_mid);
     const current = e.currentTarget.dataset.url;
     wx.previewImage({
       current,
       urls,
     });
   },
+  // 购物车  利用本地存储来添加
+  // 点击 加入购物车
+  handleCartAdd() {
+    // 1 获取缓存中的购物车 数组
+    let cart = wx.getStorageSync("cart") || [];
+    // 2 判断 商品对象是否存在于购物车数组中
+    let index = cart.findIndex((v:any) => v.goods_id === this.goodsInfo.goods_id);
+    if (index === -1) {
+      //3  不存在 第一次添加
+      this.goodsInfo.num = 1;
+      this.goodsInfo.checked = true;
+      cart.push(this.goodsInfo);
+    } else {
+      // 4 已经存在购物车数据 执行 num++
+      cart[index].num++;
+    }
+    // 5 把购物车重新添加回缓存中
+    wx.setStorageSync("cart", cart);
+    // 6 弹窗提示
+    wx.showToast({
+      title: '加入成功',
+      icon: 'success',
+      // true 防止用户 手抖 疯狂点击按钮 
+      mask: true
+    });
 });
