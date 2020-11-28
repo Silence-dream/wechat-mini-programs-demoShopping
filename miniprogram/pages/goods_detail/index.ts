@@ -6,7 +6,7 @@ Page({
   data: {
     goodsObj: {},
   },
-
+  goodsInfo: [],
   /**
    * 生命周期函数--监听页面加载
    */
@@ -18,6 +18,7 @@ Page({
   /* 获取商品详情 */
   async getGoodsDetail<T>(goods_id: T) {
     const result = await request({ url: "/goods/detail", data: { goods_id } });
+    this.goodsInfo = result.data.message.pics;
     this.setData({
       goodsObj: {
         goods_name: result.data.message.goods_name,
@@ -31,6 +32,17 @@ Page({
         ),
         pics: result.data.message.pics,
       },
+    });
+  },
+  // 点击图片放大
+  handlePrevewImage(e) {
+    // pics_mid
+    console.log(e);
+    const urls = this.goodsInfo.map((item: any) => item.pics_mid);
+    const current = e.currentTarget.dataset.url;
+    wx.previewImage({
+      current,
+      urls,
     });
   },
 });
