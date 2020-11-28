@@ -1,4 +1,23 @@
 <view>
   <SearchInput></SearchInput>
-  <Tabs tabs="{{tabs}}" bind:changeCurrent="changeCurrent"></Tabs>
+  <Tabs tabs="{{tabs}}" bind:changeCurrent="changeCurrent">
+    <block wx:if="{{tabs[0].isActive}}">
+      <view class="goods-content">
+        <view class="goods-content-item" wx:for="{{goodsList}}" wx:key="goods_id">
+          <view class="goods-left">
+            <image mode="widthFix" src="{{item.goods_small_logo? item.goods_small_logo:replaceIMG}}"></image>
+          </view>
+          <view class="goods-right">
+            <view class="goods-title">{{item.goods_name}}</view>
+            <view class="goods-price">
+              <text>¥</text>
+              {{item.goods_price}}
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+    <block wx:if="{{tabs[1].isActive}}">1</block>
+    <block wx:if="{{tabs[2].isActive}}">2</block>
+  </Tabs>
 </view>
