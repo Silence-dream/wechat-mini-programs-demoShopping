@@ -3,7 +3,7 @@
   <Tabs tabs="{{tabs}}" bind:changeCurrent="changeCurrent">
     <block wx:if="{{tabs[0].isActive}}">
       <view class="goods-content">
-        <view class="goods-content-item" wx:for="{{goodsList}}" wx:key="goods_id">
+        <navigator class="goods-content-item" wx:for="{{goodsList}}" wx:key="goods_id" url="/pages/goods_detail/index?goods_id={{item.goods_id}}">
           <view class="goods-left">
             <image mode="widthFix" src="{{item.goods_small_logo? item.goods_small_logo:replaceIMG}}"></image>
           </view>
@@ -14,7 +14,7 @@
               {{item.goods_price}}
             </view>
           </view>
-        </view>
+        </navigator>
       </view>
     </block>
     <block wx:if="{{tabs[1].isActive}}">1</block>
