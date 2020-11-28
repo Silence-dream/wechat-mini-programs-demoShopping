@@ -45,6 +45,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options: any) {
+    wx.showLoading({ title: "加载中" });
     // 设置分类id
     this.QueryParams.cid = options.cid;
     // console.log(this.QueryParams);
@@ -62,24 +63,40 @@ Page({
       this.getGoodsList();
     }
   },
+  /* 下拉操作 */
+  onPullDownRefresh: function () {
+    /*
+     * 下拉刷新功能
+     * 重置页码,商品列表,重新发送请求
+     */
+    this.QueryParams.pagenum = 1;
+    this.setData({
+      goodsList: [],
+    });
+    this.getGoodsList();
+  },
   /* 获得商品列表数据 */
   async getGoodsList() {
     const result = await request({
       url: "/goods/search",
       data: this.QueryParams,
     });
-    // 保存请求回来的商品列表数据
     /* 拼接数组 */
     const arrConcat = this.data.goodsList.concat(result.data.message.goods);
     // [...this.data.goodsList, ...result.data.message.goods]
+    // 保存请求回来的商品列表数据
     this.setData({
       goodsList: arrConcat,
     });
+    // 请求完数据关闭loading加载
+    wx.hideLoading();
+    // 请求完数据关闭下拉效果
+    wx.stopPullDownRefresh();
     // 设置总页数
     this.totalPages = Math.ceil(
       result.data.message.total / this.QueryParams.pagesize
     );
-    console.log(result);
+    // console.log(result);
   },
   // 被选中的 tabs 切换样式
   changeCurrent(e: any) {
