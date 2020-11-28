@@ -45,7 +45,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options: any) {
-    wx.showLoading({ title: "加载中" });
     // 设置分类id
     this.QueryParams.cid = options.cid;
     // console.log(this.QueryParams);
@@ -88,8 +87,6 @@ Page({
     this.setData({
       goodsList: arrConcat,
     });
-    // 请求完数据关闭loading加载
-    wx.hideLoading();
     // 请求完数据关闭下拉效果
     wx.stopPullDownRefresh();
     // 设置总页数
