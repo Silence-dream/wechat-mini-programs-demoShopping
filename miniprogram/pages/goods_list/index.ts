@@ -39,7 +39,8 @@ Page({
     // 页容量
     pagesize: 10,
   },
-
+  // 总页数
+  totalPages: 1,
   /**
    * 生命周期函数--监听页面加载
    */
@@ -52,7 +53,14 @@ Page({
   },
   // 上拉触底事件
   onReachBottom: function () {
-    console.log(11111);
+    /* 滑动到底部加载下一页数据 */
+    if (this.QueryParams.pagenum >= this.totalPages) {
+      wx.showToast({ title: "没有下一页数据了" });
+    } else {
+      this.QueryParams.pagenum++;
+      // 发送请求获取数据
+      this.getGoodsList();
+    }
   },
   /* 获得商品列表数据 */
   async getGoodsList() {
@@ -60,9 +68,18 @@ Page({
       url: "/goods/search",
       data: this.QueryParams,
     });
+    // 保存请求回来的商品列表数据
+    /* 拼接数组 */
+    const arrConcat = this.data.goodsList.concat(result.data.message.goods);
+    // [...this.data.goodsList, ...result.data.message.goods]
     this.setData({
-      goodsList: result.data.message.goods,
+      goodsList: arrConcat,
     });
+    // 设置总页数
+    this.totalPages = Math.ceil(
+      result.data.message.total / this.QueryParams.pagesize
+    );
+    console.log(result);
   },
   // 被选中的 tabs 切换样式
   changeCurrent(e: any) {
