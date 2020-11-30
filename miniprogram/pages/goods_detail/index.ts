@@ -54,9 +54,11 @@ Page({
   // 点击 加入购物车
   handleCartAdd() {
     // 1 获取缓存中的购物车 数组
-    let cart = wx.getStorageSync("cart") || [];
+    const cart = wx.getStorageSync("cart") || [];
     // 2 判断 商品对象是否存在于购物车数组中
-    let index = cart.findIndex((v:any) => v.goods_id === this.goodsInfo.goods_id);
+    const index = cart.findIndex(
+      (v: any) => v.goods_id === this.goodsInfo.goods_id
+    );
     if (index === -1) {
       //3  不存在 第一次添加
       this.goodsInfo.num = 1;
@@ -70,9 +72,10 @@ Page({
     wx.setStorageSync("cart", cart);
     // 6 弹窗提示
     wx.showToast({
-      title: '加入成功',
-      icon: 'success',
-      // true 防止用户 手抖 疯狂点击按钮 
-      mask: true
+      title: "加入成功",
+      icon: "success",
+      // true 防止用户 手抖 疯狂点击按钮
+      mask: true,
     });
+  },
 });
