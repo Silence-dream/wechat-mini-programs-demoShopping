@@ -22,9 +22,12 @@
   padding: 20rpx;
   navigator {
     flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   image {
-    width: 100%;
+    width: 140rpx;
   }
 }
 

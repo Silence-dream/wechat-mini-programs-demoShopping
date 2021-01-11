@@ -30,13 +30,17 @@
       <view class="floor-conent">
         <view class="floor-conent-left">
           <!-- 左边大图 -->
-          <navigator class="floor-conent" open-type="{{item2.open_type}}" url="{{item2.navigator_url}}" wx:for="{{item1.product_list}}" wx:for-item="item2" wx:for-index="index2" wx:key="{{name}}" wx:if="{{index2===0}}">
+          <navigator class="floor-conent" open-type="{{item2.open_type}}" url="{{item2.navigator_url}}"
+            wx:for="{{item1.product_list}}" wx:for-item="item2" wx:for-index="index2" wx:key="{{this}}"
+            wx:if="{{index2===0}}">
             <image mode="widthFix" src="{{item2.image_src}}"></image>
           </navigator>
         </view>
         <view class="floor-conent-right">
           <!-- 右边小图 -->
-          <navigator class="floor-conent" open-type="{{item2.open_type}}" url="{{item2.navigator_url}}" wx:for="{{item1.product_list}}" wx:for-item="item2" wx:for-index="index2" wx:key="{{name}}" wx:if="{{index2>0}}">
+          <navigator class="floor-conent" open-type="{{item2.open_type}}" url="{{item2.navigator_url}}"
+            wx:for="{{item1.product_list}}" wx:for-item="item2" wx:for-index="index2" wx:key="{{name}}"
+            wx:if="{{index2>0}}">
             <image mode="scaleToFill" src="{{item2.image_src}}"></image>
           </navigator>
         </view>

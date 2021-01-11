@@ -3,5 +3,8 @@
 *.wxss
 *.json
 *.js
+*.scss
+*.sass
+*.less
 miniprogram/pages/logs
 typings/*
