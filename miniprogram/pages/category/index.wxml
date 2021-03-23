@@ -4,7 +4,8 @@
   <view class="cates-container">
     <!-- 左侧菜单 -->
     <scroll-view class="left-meun " scroll-y>
-      <view class="left-meun-item {{index===currentIndex? 'current' : ''}}" wx:for="{{leftMenuList}}" wx:key="item" bind:tap="handCurrent" data-index="{{index}}">{{item}}</view>
+      <view class="left-meun-item {{index===currentIndex? 'current' : ''}}" wx:for="{{leftMenuList}}" wx:key="item"
+        bind:tap="handCurrent" data-index="{{index}}">{{item}}</view>
     </scroll-view>
     <!-- 右侧菜单 -->
     <scroll-view scroll-top="{{scrollTop}}" class="right-meun" scroll-y>
@@ -19,7 +20,8 @@
         <!-- 商品内容 -->
         <view class="goods-content">
           <!-- 商品链接 -->
-          <navigator wx:for="{{item1.children}}" wx:for-item="item2" wx:for-index="index2" wx:key="cat_id" url="/pages/goods_list/index?cid={{item2.cat_id}}">
+          <navigator wx:for="{{item1.children}}" wx:for-item="item2" wx:for-index="index2" wx:key="cat_id"
+            url="/pages/goods_list/index?cid={{item2.cat_id}}">
             <image mode="widthFix" src="{{item2.cat_icon}}"></image>
             <!-- 商品名字 -->
             <view class="goods-content-name">{{item2.cat_name}}</view>
